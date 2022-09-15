@@ -1,6 +1,19 @@
 import React from "react";
+import { useEffect } from "react";
+import { useContext } from "react";
+import { MdDelete, MdEdit } from "react-icons/md";
+import { JobVacancyContext } from "../../context/JobVacancyContext";
 
 function Table() {
+  const { jobData, jobFunctions } = useContext(JobVacancyContext);
+  const { getJobData } = jobFunctions;
+
+  useEffect(() => {
+    getJobData();
+  }, []);
+
+  console.log(jobData);
+
   return (
     <div className="p-1 overflow-x-auto relative sm:rounded-lg">
       <div className="pb-4 bg-white dark:bg-gray-900">
@@ -35,16 +48,22 @@ function Table() {
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" className="py-3 px-6 text-center">
-              Product name
+              Job Title
             </th>
             <th scope="col" className="py-3 px-6 text-center">
-              Color
+              Company Name
             </th>
             <th scope="col" className="py-3 px-6 text-center">
-              Category
+              Company City
             </th>
             <th scope="col" className="py-3 px-6 text-center">
-              Price
+              Job Tenure
+            </th>
+            <th scope="col" className="py-3 px-6 text-center">
+              Job Type
+            </th>
+            <th scope="col" className="py-3 px-6 text-center">
+              Job Salary
             </th>
             <th scope="col" className="py-3 px-6 text-center">
               Action
@@ -52,32 +71,34 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <th
-              scope="row"
-              className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center"
+          {jobData.map((job, index) => (
+            <tr
+              className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              key={index}
             >
-              Apple MacBook Pro 17"
-            </th>
-            <td className="py-4 px-6 text-center">Sliver</td>
-            <td className="py-4 px-6 text-center">Laptop</td>
-            <td className="py-4 px-6 text-center">$2999</td>
-            <td className="py-4 px-6 flex gap-3 justify-center">
-              <a
-                href="#"
-                className="font-medium text-emerald-600 dark:text-emerald-600 hover:underline"
-              >
-                Edit
-              </a>
-              <a
-                href="#"
-                className="font-medium text-red-600 dark:text-red-500 hover:underline"
-              >
-                Delete
-              </a>
-            </td>
-          </tr>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <td className="py-4 px-6 text-center">{job.title}</td>
+              <td className="py-4 px-6 text-center">{job.company_name}</td>
+              <td className="py-4 px-6 text-center">{job.company_city}</td>
+              <td className="py-4 px-6 text-center">{job.job_tenure}</td>
+              <td className="py-4 px-6 text-center">{job.job_type}</td>
+              <td className="py-4 px-6 text-center">{`Rp${job.salary_min} - Rp${job.salary_max}`}</td>
+              <td className="py-4 px-6 flex gap-3 justify-center">
+                <button
+                  type="button"
+                  className="text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-semibold rounded-lg text-sm px-4 py-2 text-center"
+                >
+                  <MdEdit size={20} />
+                </button>
+                <button
+                  type="button"
+                  className="text-red-500 hover:text-white border border-red-500 hover:bg-red-500 focus:ring-4 focus:outline-none focus:ring-red-400 font-semibold rounded-lg text-sm px-4 py-2 text-center"
+                >
+                  <MdDelete size={20} />
+                </button>
+              </td>
+            </tr>
+          ))}
+          {/* <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             <th
               scope="row"
               className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center"
@@ -201,7 +222,7 @@ function Table() {
                 Delete
               </a>
             </td>
-          </tr>
+          </tr> */}
         </tbody>
       </table>
     </div>

@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Form from "./components/Dashboard/Form";
 import Table from "./components/Dashboard/Table";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -18,6 +19,10 @@ function App() {
           <Route
             path="/dashboard"
             element={<Dashboard component={<Table />} page="Dashboard" />}
+          />
+          <Route
+            path="/job-form"
+            element={<Dashboard component={<Form />} page="Form" />}
           />
         </Routes>
       </JobVacancyProvider>

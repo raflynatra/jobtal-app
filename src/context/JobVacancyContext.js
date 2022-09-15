@@ -12,7 +12,6 @@ export const JobVacancyProvider = (props) => {
         .get("https://dev-example.sanbercloud.com/api/job-vacancy")
         .then((res) => {
           resolve(setJobData([...res.data.data]));
-          console.log(res.data.data);
         })
         .catch((error) => {
           reject(error);

@@ -39,7 +39,7 @@ function JobCard(props) {
 
   return (
     <a
-      href=""
+      href={`/job-vacancy/${props.job.id}`}
       className="block p-3 bg-white rounded-lg border box-border border-gray-200 shadow-md hover:bg-gray-100 md:h-64 md:w-full"
     >
       <div className="flex items-center space-x-4 mb-3">

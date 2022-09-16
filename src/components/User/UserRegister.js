@@ -97,7 +97,10 @@ function UserRegister() {
             className="ml-2 text-sm font-medium text-gray-900"
           >
             I agree with the{" "}
-            <a href="#" className="text-emerald-600 hover:underline">
+            <a
+              href="/terms-condition"
+              className="text-emerald-600 hover:underline"
+            >
               terms and conditions
             </a>
             .

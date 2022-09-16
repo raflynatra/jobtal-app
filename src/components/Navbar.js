@@ -5,11 +5,10 @@ import UserLogin from "./User/UserLogin";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
-  const [show, setShow] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const navItem = [
     ["/", "Home"],
     ["/job-vacancy", "Job Vacancy"],
-    ["/contact", "Contact"],
   ];
 
   return (
@@ -24,7 +23,7 @@ function Navbar() {
           </NavLink>
           <div className="flex md:order-2">
             <NavLink
-              to="/"
+              to="/register"
               className="px-5 py-2.5 text-center md:hover:text-emerald-600 font-semibold"
             >
               Register
@@ -32,7 +31,7 @@ function Navbar() {
             <button
               type="button"
               className="text-white bg-emerald-600 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0"
-              onClick={() => setShow(true)}
+              onClick={() => setShowModal(true)}
             >
               <span className="font-semibold">Login</span>
             </button>
@@ -73,9 +72,10 @@ function Navbar() {
                     to={url}
                     className={({ isActive }) =>
                       isActive
-                        ? "block py-2 pr-4 pl-3 rounded md:p-0 text-white bg-emerald-600 md:bg-transparent md:text-emerald-600 md:font-semibold"
+                        ? `block py-2 pr-4 pl-3 rounded md:p-0 text-white bg-emerald-600 md:bg-transparent md:text-emerald-600 md:font-semibold`
                         : "block py-2 pr-4 pl-3 rounded md:p-0 text-gray-700 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-emerald-600 md:font-semibold"
                     }
+                    onClick={() => setOpen(!open)}
                   >
                     {title}
                   </NavLink>
@@ -85,7 +85,7 @@ function Navbar() {
           </div>
         </div>
       </nav>
-      <UserLogin onClose={() => setShow(false)} show={show} />
+      <UserLogin onClose={() => setShowModal(false)} show={showModal} />
     </>
   );
 }

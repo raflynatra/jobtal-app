@@ -3,7 +3,7 @@ import Sidebar from "../components/Dashboard/Sidebar";
 
 function Dashboard(props) {
   return (
-    <div className="container md:mt-20 mb-5 md:mx-auto">
+    <div className="container md:mt-20 mb-5 md:mx-auto min-h-screen">
       <div className="flex justify-between gap-5 py-5">
         <Sidebar />
         <div className="px-5 pb-8 w-5/6 bg-white rounded-lg border shadow-md">

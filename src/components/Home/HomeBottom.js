@@ -23,6 +23,16 @@ function HomeBottom() {
       "I use Jobtal often. Jobtal is the most valuable business resource  we have EVER purchased. We've used Jobtal for the last five years. We're loving it.",
       "https://xsgames.co/randomusers/avatar.php?g=female",
     ],
+    [
+      "Holli I.",
+      "Jobtal has really helped our business. It's just amazing. Jobtal is both attractive and highly adaptable. Jobtal is worth much more than I paid.",
+      "https://xsgames.co/randomusers/avatar.php?g=male",
+    ],
+    [
+      "Meryl O.",
+      "I use Jobtal often. Jobtal is the most valuable business resource  we have EVER purchased. We've used Jobtal for the last five years. We're loving it.",
+      "https://xsgames.co/randomusers/avatar.php?g=female",
+    ],
   ];
   return (
     <div className="py-10 px-5 bg-gray-100 flex flex-col md:flex-row md:items-center md:justify-around">

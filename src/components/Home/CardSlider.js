@@ -11,7 +11,7 @@ function CardSlider(props) {
     slider.scrollTop = slider.scrollTop + 161;
   };
   return (
-    <div className="md:relative md:w-full md:h-80 md:flex md:items-center">
+    <div className="relative md:w-full md:h-80 md:flex md:items-center">
       <MdKeyboardArrowUp
         size={35}
         className="bg-white absolute rounded-full cursor-pointer opacity-40 hover:opacity-100 -top-5 left-1/2 right-1/2 shadow-md"
@@ -19,7 +19,7 @@ function CardSlider(props) {
       />
       <div
         id="slider"
-        className="md:mx-auto md:overflow-y-scroll w-full h-full scroll-smooth"
+        className="md:mx-auto overflow-y-scroll w-full h-64 md:h-full scroll-smooth"
       >
         {props.testimony.map(([name, message, src], index) => (
           <div

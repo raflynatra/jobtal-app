@@ -20,7 +20,7 @@ function JobVacancy() {
         <div className="px-5">
           <button
             type="button"
-            class="w-full text-emerald-600 hover:text-white border border-emerald-600 hover:bg-emerald-600 focus:ring-1 focus:outline-none focus:ring-emerald-600 font-bold rounded-lg text-sm px-5 py-2 flex justify-center items-center gap-1 md:hidden"
+            className="w-full text-emerald-600 hover:text-white border border-emerald-600 hover:bg-emerald-600 focus:ring-1 focus:outline-none focus:ring-emerald-600 font-bold rounded-lg text-sm px-5 py-2 flex justify-center items-center gap-1 md:hidden"
             data-drawer-target="drawer-bottom-example"
             data-drawer-toggle="drawer-bottom-example"
             data-drawer-placement="bottom"

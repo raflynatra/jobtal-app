@@ -46,7 +46,7 @@ function JobCard(props) {
         <img
           src={props.job.company_image_url}
           alt={`${props.job.company_name}-logo`}
-          className="h-20 w-20"
+          className="w-16 object-cover relative"
         />
         <div className="card-title mb-2">
           <h5 className="text-lg font-bold tracking-tight text-gray-900">

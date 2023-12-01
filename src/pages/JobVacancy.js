@@ -4,6 +4,7 @@ import JobCard from "../components/JobVacancy/JobCard";
 import JobFilter from "../components/JobVacancy/JobFilter";
 import SearchBar from "../components/JobVacancy/SearchBar";
 import { JobVacancyContext } from "../context/JobVacancyContext";
+import LandingLayout from "../layouts/LandingLayout";
 
 function JobVacancy() {
   const { jobData, jobFunctions } = useContext(JobVacancyContext);
@@ -14,7 +15,7 @@ function JobVacancy() {
   }, []);
 
   return (
-    <>
+    <LandingLayout>
       <div className="container mt-16 mb-5 md:mt-20 md:mx-auto">
         <SearchBar />
         <div className="px-5">
@@ -41,7 +42,7 @@ function JobVacancy() {
           </div>
         </div>
       </div>
-    </>
+    </LandingLayout>
   );
 }
 

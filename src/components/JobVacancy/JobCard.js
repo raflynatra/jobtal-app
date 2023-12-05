@@ -1,8 +1,11 @@
 import React from "react";
 import { MdAttachMoney, MdLocationPin } from "react-icons/md";
 import { BsClock } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 function JobCard(props) {
+  const navigate = useNavigate();
+
   const formatDate = (date) => {
     date = new Date(date);
     let dayOfMonth = date.getDate();
@@ -24,23 +27,18 @@ function JobCard(props) {
     hour = hour < 10 ? "0" + hour : hour;
     minutes = minutes < 10 ? "0" + minutes : minutes;
 
-    if (diffSec < 1) {
-      return "right now";
-    } else if (diffMin < 1) {
-      return `${diffSec} seconds ago`;
-    } else if (diffHour < 1) {
-      return `${diffMin} minutes ago`;
-    } else if (diffDay < 1) {
-      return `${Math.round(diffHour)} hours ago`;
-    } else {
-      return `${dayOfMonth}.${month}.${year} ${hour}:${minutes}`;
-    }
+    if (diffSec < 1) return "right now";
+    if (diffMin < 1) return `${diffSec} seconds ago`;
+    if (diffHour < 1) return `${diffMin} minutes ago`;
+    if (diffDay < 1) return `${Math.round(diffHour)} hours ago`;
+
+    return `${dayOfMonth}.${month}.${year} ${hour}:${minutes}`;
   };
 
   return (
-    <a
-      href={`/job-vacancy/${props.job.id}`}
-      className="block p-3 bg-white rounded-lg border box-border border-gray-200 shadow-md hover:bg-gray-100 md:h-64 md:w-full"
+    <div
+      className="p-3 bg-white rounded-lg border box-border border-gray-200 shadow-md hover:bg-gray-100 md:w-full"
+      onClick={() => navigate(`/job-vacancy/${props.job.id}`)}
     >
       <div className="flex items-center space-x-4 mb-3">
         <img
@@ -62,7 +60,8 @@ function JobCard(props) {
         </p>
         <p className="flex items-center text-md py-1">
           <MdAttachMoney className="mr-1 w-5 h-5 text-gray-500" />
-          {props.job.salary_min} - {props.job.salary_max}
+          {props.job.salary_min.toLocaleString("id")} -{" "}
+          {props.job.salary_max.toLocaleString("id")}
         </p>
         <p className="flex items-center text-md py-1">
           {props.job.job_tenure} - {props.job.job_type}
@@ -72,7 +71,7 @@ function JobCard(props) {
           {`Updated at ${formatDate(props.job.updated_at)}`}
         </p>
       </div>
-    </a>
+    </div>
   );
 }
 

@@ -1,23 +1,24 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { MdFilterList } from "react-icons/md";
 import JobCard from "../components/JobVacancy/JobCard";
-import JobFilter from "../components/JobVacancy/JobFilter";
+import JobFilter from "../components/JobVacancy/Filter";
 import SearchBar from "../components/JobVacancy/SearchBar";
 import { JobVacancyContext } from "../context/JobVacancyContext";
 import LandingLayout from "../layouts/LandingLayout";
 
 function JobVacancy() {
   const { jobData, jobFunctions } = useContext(JobVacancyContext);
+  const [params, setParams] = useState({});
   const { getJobData } = jobFunctions;
 
   useEffect(() => {
-    getJobData();
-  }, []);
+    getJobData(params);
+  }, [params]);
 
   return (
     <LandingLayout>
       <div className="container mt-16 mb-5 md:mt-20 md:mx-auto">
-        <SearchBar />
+        <SearchBar setParams={setParams} />
         <div className="px-5">
           <button
             type="button"
@@ -33,7 +34,7 @@ function JobVacancy() {
         </div>
         <div className="md:flex md:justify-between gap-5">
           <aside className="w-72 hidden md:block" aria-label="Sidebar">
-            <JobFilter job={jobData} />
+            <JobFilter setParams={setParams} />
           </aside>
           <div className="grid md:grid-cols-3 w-full gap-5 p-5 md:p-0">
             {jobData.map((job, index) => (

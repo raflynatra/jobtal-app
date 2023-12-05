@@ -6,10 +6,12 @@ export const JobVacancyContext = createContext();
 export const JobVacancyProvider = (props) => {
   const [jobData, setJobData] = useState([]);
 
-  const getJobData = () => {
+  const getJobData = (params) => {
     return new Promise((resolve, reject) => {
-      axios
-        .get("https://dev-example.sanbercloud.com/api/job-vacancy")
+      axios({
+        url: "https://dev-example.sanbercloud.com/api/job-vacancy",
+        params: params,
+      })
         .then((res) => {
           resolve(setJobData([...res.data.data]));
         })

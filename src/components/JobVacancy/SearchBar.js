@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdLocationPin, MdSearch } from "react-icons/md";
 
-function SearchBar() {
+function SearchBar({ setParams }) {
+  const [searchValue, setSearchValue] = useState({});
+
+  function handleClick() {
+    setParams(searchValue);
+  }
+
+  function handleChange(e) {
+    const key = e.target.name;
+    const value = e.target.value;
+
+    setSearchValue((searchValue) => ({ ...searchValue, [key]: value }));
+  }
+
   return (
     <div className="p-5 md:px-0">
-      <form className="flex flex-col md:flex-row items-center gap-3">
+      <div className="flex flex-col md:flex-row items-center gap-3">
         <label htmlFor="simple-search" className="sr-only">
           Search
         </label>
@@ -26,10 +39,12 @@ function SearchBar() {
           </div>
           <input
             type="text"
+            name="title"
             id="simple-search"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full pl-10 p-2.5"
             placeholder="Search job vacancy"
             required=""
+            onChange={handleChange}
           />
         </div>
         <div className="relative w-full">
@@ -45,15 +60,15 @@ function SearchBar() {
           />
         </div>
         <button
-          type="submit"
           className="block w-full md:w-fit p-2.5 text-md font-bold text-white bg-emerald-600 rounded-lg border border-emerald-600 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 md:flex-none"
+          onClick={handleClick}
         >
           <div className="flex justify-center gap-1 items-center">
             <MdSearch size={20} />
             <span className="md:sr-only">Search</span>
           </div>
         </button>
-      </form>
+      </div>
     </div>
   );
 }
